@@ -31,12 +31,12 @@
       become: yes
       become_user: postgres
       postgresql_db:
-          name: "scrapping"
+          name: "az"
           owner: "postgres"
     - name: Execute script database
-      command: python3 /home/farouk/flask_az/db.py
+      command: python3 /home/farouk/db/flask_az/db.py
     - name: Execute script app.py
-      command: python3 /home/farouk/flask_az/app.py
+      command: python3 /home/farouk/app/flask_az/app.py
 
      
     

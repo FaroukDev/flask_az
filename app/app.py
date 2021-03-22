@@ -21,7 +21,7 @@ def showData():
     try:
         conn = psycopg2.connect(host='localhost',
                                     user='farouk',
-                                    database='messi',
+                                    database='az',
                                     password='pw123')
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM users;")
