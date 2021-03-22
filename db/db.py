@@ -21,7 +21,7 @@ class DB():
     def createTable(self):
         print("hello")
         sql_query = self.conn.cursor()
-        #sql_query.execute("DROP TABLE users")
+        sql_query.execute("DROP TABLE users")
         sql_query.execute("CREATE TABLE IF NOT EXISTS users (id serial PRIMARY KEY NOT NULL, nom VARCHAR(100) NOT NULL)")
         self.conn.commit()
        
