@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 
 from flask import jsonify
 
-from logger import log
+from logging import log
 
 import psycopg2
 

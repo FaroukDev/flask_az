@@ -9,6 +9,7 @@
         repo: "https://github.com/FaroukDev/flask_az.git"
         dest: /home/farouk/flask_az
         update: yes # Does a git pull if the repo already exists
+        version: master
     - name: install postgres
       apt:
         name: postgresql
@@ -17,7 +18,7 @@
       become: yes
       apt:
         name:
-          - python-psycopg2
+          - python3-psycopg2
           - python3-flask
         state: latest
     - name: Create user psql
@@ -34,9 +35,9 @@
           name: "az"
           owner: "postgres"
     - name: Execute script database
-      command: python3 /home/farouk/db/flask_az/db.py
+      command: python3 /home/farouk/flask_az/db/db.py
     - name: Execute script app.py
-      command: python3 /home/farouk/app/flask_az/app.py
+      command: python3 /home/farouk/flask_az/app/app.py
 
      
     

@@ -10,7 +10,7 @@ class DB():
         try:
             conn = psycopg2.connect(host='localhost',
                                             user='farouk',
-                                            database='messi',
+                                            database='az',
                                             password='pw123')
                                             
             print("Connected to my database")
