@@ -32,6 +32,10 @@ class DB():
             sql_query.execute("INSERT INTO users (nom) VALUES ('delpiero');")
             sql_query.execute("INSERT INTO users (nom) VALUES ('raul ');")
             sql_query.execute("INSERT INTO users (nom) VALUES ('Zinedine');")
+            sql_query.execute("INSERT INTO users (nom) VALUES ('Colin dagba');")
+            sql_query.execute("INSERT INTO users (nom) VALUES ('georges weah');")
+            sql_query.execute("INSERT INTO users (nom) VALUES ('Raul');")
+            sql_query.execute("INSERT INTO users (nom) VALUES ('M'bappé');")
             self.conn.commit()
         except Exception as e:
             print("Error :", e)
