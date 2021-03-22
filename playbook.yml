@@ -1,0 +1,44 @@
+- name: configure vm 
+  hosts: azure-vm
+  become: yes
+  become_method: sudo
+  remote_user: farouk
+  tasks:
+    - name: clone repo
+      git:
+        repo: "https://github.com/FaroukDev/flask_az.git"
+        dest: /home/farouk/flask_az
+        update: yes # Does a git pull if the repo already exists
+    - name: install postgres
+      apt:
+        name: postgresql
+        state: latest
+    - name : Installation de psycopg2 & flask
+      become: yes
+      apt:
+        name:
+          - python-psycopg2
+          - python3-flask
+        state: latest
+    - name: Create user psql
+      become: yes
+      become_user: postgres
+      postgresql_user:
+        name: "farouk"
+        password: "pw123"
+        role_attr_flags: "CREATEDB,NOSUPERUSER"
+    - name: Create database
+      become: yes
+      become_user: postgres
+      postgresql_db:
+          name: "scrapping"
+          owner: "postgres"
+    - name: Execute script database
+      command: python3 /home/farouk/flask_az/db.py
+    - name: Execute script app.py
+      command: python3 /home/farouk/flask_az/app.py
+
+     
+    
+    
+    
