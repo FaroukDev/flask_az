@@ -2,7 +2,6 @@ from flask import Flask, request, render_template
 
 from flask import jsonify
 
-from logging import log
 
 import psycopg2
 
@@ -10,13 +9,13 @@ app = Flask(__name__)
 
 
 @app.route('/')
-@log
+
 def hello():
     return "Bienvenue à tous !"
 
 
 @app.route('/test')
-@log
+
 def showData():
     try:
         conn = psycopg2.connect(host='localhost',
@@ -34,7 +33,7 @@ def showData():
         print("Error :", e)
 
 @app.route('/inc', methods=['GET', 'POST'])
-@log
+
 def increment():
     try:
         conn = psycopg2.connect(host='localhost',
@@ -50,7 +49,7 @@ def increment():
         print("Error :", e) 
 
 @app.route('/id')
-@log
+
 def showCurentId():
     try:
         conn = psycopg2.connect(host='localhost',
