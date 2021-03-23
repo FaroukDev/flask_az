@@ -25,7 +25,11 @@ def az():
     return render_template("index.html")
 
 
-
+@app.route('/getdata')
+def getData():
+    with DB()as db:
+        data = db.getData()
+        return jsonify(data)
 # @app.route("/send_data", methods=["POST"])
 # def sendEmail():
 #     mail = request.form.get('mail')

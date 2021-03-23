@@ -42,7 +42,7 @@ class DB():
         sql_query.execute("CREATE TABLE IF NOT EXISTS users (id serial PRIMARY KEY NOT NULL, nom VARCHAR(100) NOT NULL)")
         self.conn.commit()
     
-    def getData(self, mail):
+    def getData(self):
         sql_query = self.conn.cursor()
         sql_query.execute("SELECT * FROM users")
         name = sql_query.fetchall()
