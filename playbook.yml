@@ -6,7 +6,7 @@
   tasks:
     - name: clone repo
       git:
-        repo: "https://github.com/FaroukDev/flask_az.git"
+        repo: "https://github.com/FaroukDev/flaskaz.git"
         dest: /home/farouk/flask_az
         update: yes # Does a git pull if the repo already exists
         version: master
@@ -36,9 +36,9 @@
           name: "az"
           owner: "postgres"
     - name: Execute script database
-      command: python3 /home/farouk/flask_az/db.py
+      command: python3 /home/farouk/flaskaz/db.py
     - name: Execute script app.py
-      command: python3 /home/farouk/flask_az/app.py
+      command: python3 /home/farouk/flaskaz/app.py
 
      
     

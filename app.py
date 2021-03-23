@@ -38,16 +38,18 @@ def az():
 
 @app.route('/send_msg', methods=['GET','POST'])
 def send_message():
-    if request.method == 'POST':
-        email = request.form['email']
-        subject = request.form['subject']
-        msg = request.form['message']
-        message = Message(subject,sender="extramilessimplon@gmail.com",recipients=[email])
-        message.body = msg
-        mail.send(message)
-        success = "Message successfully send"
-        return render_template("result.html", success=success)
-
+    try:
+        if request.method == 'POST':
+            email = request.form['email']
+            subject = request.form['subject']
+            msg = request.form['message']
+            message = Message(subject,sender="extramilessimplon@gmail.com",recipients=[email])
+            message.body = msg
+            mail.send(message)
+            success = "Message successfully send"
+            return render_template("result.html", success=success)
+    except Exception as err:
+            print("Error :",err)
         
         
 # @app.route("/send_data", methods=["POST"])
