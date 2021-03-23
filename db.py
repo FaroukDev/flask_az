@@ -26,13 +26,6 @@ class DB():
         sql_query.execute("CREATE TABLE IF NOT EXISTS users (id serial PRIMARY KEY NOT NULL, nom VARCHAR(100) NOT NULL)")
         self.conn.commit()
     
-    # def getData(self,mail):
-    #     sql_query = self.conn.cursor()
-    #     sql_query.execute("SELECT * FROM users);")
-    #     mydata = sql_query.fetchall()
-    #     self.conn.commit()
-    #     return mydata
-        
 
     
     def insertData(self):
