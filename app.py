@@ -3,6 +3,7 @@ import sys
 from flask_mail import Mail
 from flask_mail import Message
 
+
 from flask import jsonify
 
 from flask import (
@@ -19,15 +20,35 @@ from db import DB
 app = Flask(__name__)
 
 
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'extramilessimplon@gmail.com'
+app.config['MAIL_PASSWORD'] = 'delpiero92'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+
+
+mail = Mail(app)
 
 @app.route('/')
 def az():
     return render_template("index.html")
 
 
-@app.route('/getdata')
-def getdata():
-        return render_template("index.html")
+@app.route('/send_msg', methods=['GET','POST'])
+def send_message():
+    if request.method == 'POST':
+        email = request.form['email']
+        subject = request.form['subject']
+        msg = request.form['message']
+        message = Message(subject,sender="extramilessimplon@gmail.com",recipients=[email])
+        message.body = msg
+        mail.send(message)
+        success = "Message successfully send"
+        return render_template("result.html", success=success)
+
+        
         
 # @app.route("/send_data", methods=["POST"])
 # def sendEmail():

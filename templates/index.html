@@ -9,13 +9,15 @@
 <body>
     <div class="form_addlink">
         <div id="app">
-            <form id="form" method="post" action="">
+            <form action="{{url_for('send_message')}}" method="POST" >
                 <div class="container">
-                    <input type="email" placeholder="Enter your email" name="mail" required />
+                    <input type="email" placeholder="Enter your email" name="email" required />
+                    <input type="text" placeholder="Enter your subject" name="subject" required />
+                    <textarea name="message" id="" cols="70" rows="10"></textarea>
                     <button id="add" type="submit" class="signup">Submit</button>
                     </div>
-                </div>
             </form>
+        </div>
         </div>
 
     </div>
