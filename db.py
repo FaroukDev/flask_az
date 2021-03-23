@@ -6,22 +6,6 @@ class DB():
         self.createTable()
         self.insertData()
 
-    def __enter__(self):
-        try:
-            self._dbcon = psycopg2.connect(
-                host="localhost",
-                user="farouk",
-                password="pw123",
-                #auth_plugin="mysql_native_password",
-                database="az"
-            )
-            self._cursor = self._dbcon.cursor()
-            return self
-        except:
-            raise
-
-    def __exit__(self, exc_type, exc_val, traceback):
-        self._dbcon.close()
 
     def connection_db(self):
         try:
@@ -38,7 +22,7 @@ class DB():
     def createTable(self):
         print("hello")
         sql_query = self.conn.cursor()
-        #sql_query.execute("DROP TABLE users")
+        sql_query.execute("DROP TABLE users")
         sql_query.execute("CREATE TABLE IF NOT EXISTS users (id serial PRIMARY KEY NOT NULL, nom VARCHAR(100) NOT NULL)")
         self.conn.commit()
     

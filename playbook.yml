@@ -7,7 +7,7 @@
     - name: clone repo
       git:
         repo: "https://github.com/FaroukDev/flaskaz.git"
-        dest: /home/farouk/flask_az
+        dest: /home/farouk/flaskaz
         update: yes # Does a git pull if the repo already exists
         version: master
     - name: install postgres
