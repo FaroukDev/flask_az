@@ -36,9 +36,9 @@
           name: "az"
           owner: "postgres"
     - name: Execute script database
-      command: python3 /home/farouk/flask_az/db/db.py
+      command: python3 /home/farouk/flask_az/db.py
     - name: Execute script app.py
-      command: python3 /home/farouk/flask_az/app/app.py
+      command: python3 /home/farouk/flask_az/app.py
 
      
     
