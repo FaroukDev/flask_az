@@ -20,6 +20,7 @@
         name:
           - python3-psycopg2
           - python3-flask
+          - python3-flask-mail
         state: latest
     - name: Create user psql
       become: yes

@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/index.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello world</h1>
     <div class="form_addlink">
         <div id="app">
-            <form id="form" method="post" action="{{url_for('login')}}">
+            <form id="form" method="post" action="{{ url_for('sendEmail') }}">
                 <div class="container">
-                    <label for="text" class="label_title">Your name</label>
-                    <input type="text" placeholder="Enter your name" name="name" required />
+                    <input type="email" placeholder="Enter your email" name="mail" required />
                     <button id="add" type="submit" class="signup">Submit</button>
                     </div>
                 </div>
