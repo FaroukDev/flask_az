@@ -15,7 +15,7 @@ from flask import (
 
 import psycopg2
 
-# from db import DB
+from db import *
 
 app = Flask(__name__)
 
@@ -51,7 +51,13 @@ def send_message():
     except Exception as err:
             print("Error :",err)
         
-        
+
+@app.route('/send_data', methods=['GET','POST'])
+def get_data():
+    db = DB()
+    data_players = db.getData()
+    return jsonify(data_players)
+
 # @app.route("/send_data", methods=["POST"])
 # def sendEmail():
 #     mail = request.form.get('mail')

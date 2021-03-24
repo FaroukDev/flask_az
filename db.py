@@ -1,5 +1,6 @@
 import psycopg2
 
+
 class DB():
     def __init__(self):
         self.conn = self.connection_db()
@@ -26,8 +27,13 @@ class DB():
         sql_query.execute("CREATE TABLE IF NOT EXISTS users (id serial PRIMARY KEY NOT NULL, nom VARCHAR(100) NOT NULL)")
         self.conn.commit()
     
-
-    
+    def getData(self):
+        sql_select_Query = "SELECT * FROM users"
+        cursor = self.conn.cursor()
+        cursor.execute(sql_select_Query)
+        data = cursor.fetchall()
+        return data
+        
     def insertData(self):
         try:
             sql_query = self.conn.cursor()
