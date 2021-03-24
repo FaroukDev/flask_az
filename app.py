@@ -2,9 +2,9 @@ import os
 import sys
 from flask_mail import Mail
 from flask_mail import Message
+from logger import log
 
 
-from flask import jsonify
 
 from flask import (
     Flask,
@@ -15,7 +15,7 @@ from flask import (
 
 import psycopg2
 
-from db import *
+from db import DB
 
 app = Flask(__name__)
 
@@ -28,15 +28,14 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
 
-
 mail = Mail(app)
 
 @app.route('/')
 def az():
     return render_template("index.html")
 
-
 @app.route('/send_msg', methods=['GET','POST'])
+@log
 def send_message():
     try:
         if request.method == 'POST':
@@ -48,8 +47,8 @@ def send_message():
             mail.send(message)
             success = "Message successfully send"
             return render_template("result.html", success=success)
-    except Exception as err:
-            print("Error :",err)
+    except Exception as e:
+            raise Exception(e)
         
 
 @app.route('/send_data', methods=['GET','POST'])
@@ -58,21 +57,11 @@ def get_data():
     data_players = db.getData()
     return jsonify(data_players)
 
-# @app.route("/send_data", methods=["POST"])
-# def sendEmail():
-#     mail = request.form.get('mail')
-#     try:
-#         with DB() as db:
-#             name = db.getData(mail)
-#             message = 'Message successfully send'
-#     except Exception as e:
-#         message = 'Failed to send email'
-#     finally:
-#         return render_template("index.html", name=name, message=message)
-
-
-
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
+
+
+
+
+

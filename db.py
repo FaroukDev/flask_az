@@ -1,4 +1,7 @@
 import psycopg2
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class DB():
@@ -33,7 +36,7 @@ class DB():
         cursor.execute(sql_select_Query)
         data = cursor.fetchall()
         return data
-        
+
     def insertData(self):
         try:
             sql_query = self.conn.cursor()

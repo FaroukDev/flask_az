@@ -1,6 +1,5 @@
 import logging
 
-
 def log(func):
     def wrapper(*args, **kwargs):
         logging.info(f"Entering function {func.__name__}")
