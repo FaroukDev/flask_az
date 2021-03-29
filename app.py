@@ -15,7 +15,7 @@ from flask import (
 
 import psycopg2
 
-from db import DB
+from myDb import DB
 
 app = Flask(__name__)
 

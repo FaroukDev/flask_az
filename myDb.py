@@ -31,7 +31,7 @@ class DB():
         self.conn.commit()
     
     def getData(self):
-        sql_select_Query = "SELECT * FROM users"
+        sql_select_Query = "SELECT id,nom FROM users"
         cursor = self.conn.cursor()
         cursor.execute(sql_select_Query)
         data = cursor.fetchall()
@@ -43,10 +43,6 @@ class DB():
             sql_query.execute("INSERT INTO users (nom) VALUES ('delpiero');")
             sql_query.execute("INSERT INTO users (nom) VALUES ('raul ');")
             sql_query.execute("INSERT INTO users (nom) VALUES ('Zinedine');")
-            sql_query.execute("INSERT INTO users (nom) VALUES ('Colin dagba');")
-            sql_query.execute("INSERT INTO users (nom) VALUES ('georges weah');")
-            sql_query.execute("INSERT INTO users (nom) VALUES ('Raul');")
-            sql_query.execute("INSERT INTO users (nom) VALUES ('Mbappé');")
             self.conn.commit()
         except Exception as e:
             print("Error :", e)
