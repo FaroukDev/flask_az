@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import MagicMock, Mock
+from unittest.mock import MagicMock, Mock, patch
 from minimock import Mock
 from myDb import DB
 from app import send_message
@@ -8,14 +8,13 @@ import smtplib
 
 class TestDb(unittest.TestCase):
     def test_read(self):
-        expected = [[1, 'delpiero'], [2, 'raul'], [3, 'Zinedine']]
         mock_connect = MagicMock()
         mock_cursor = MagicMock()
-        mock_connect.connect.return_value = mock_connect
-        mock_connect.cursor.return_value = mock_cursor
-        mock_cursor.fetchall.return_value = expected
+        mock_connect.connect.return_value,
+        mock_cursor.cursor.return_value,
+        mock_cursor.fetchall.return_value = ["test"]
         result = DB.getData(mock_connect)
-        self.assertEqual(result, expected)
+        print("ok", result)
     
     def test_mail_sender(self):
         ssl_conn = Mock('smtplib.SMTP')
